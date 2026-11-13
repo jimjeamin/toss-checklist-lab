@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fa" />
+    <title>오늘의 체크리스트</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <span>오늘의 체크리스트</span>
+        <span class="local-badge">오늘의 정리</span>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">조금씩 해내는 오늘</p>
+        <h1 id="page-title">작은 할 일부터<br />하나씩 끝내봐요</h1>
+        <p class="date-line" id="today-date"></p>
+      </section>
+
+      <section class="progress-card" aria-label="진행 상황">
+        <div class="progress-copy">
+          <span>오늘의 완료</span>
+          <strong id="progress-label">0 / 0 완료</strong>
+        </div>
+        <div class="progress-track"><span id="progress-bar"></span></div>
+        <p class="remaining-label" id="remaining-label">할 일을 추가해 오늘을 시작해요.</p>
+      </section>
+
+      <form class="add-form" id="add-form">
+        <label class="visually-hidden" for="new-task">새 체크리스트 항목</label>
+        <input id="new-task" name="task" maxlength="80" placeholder="새로운 할 일을 입력해요" autocomplete="off" required />
+        <button type="submit" aria-label="항목 추가"><span aria-hidden="true">＋</span> 추가</button>
+      </form>
+
+      <button class="share-button" id="share-list" type="button">
+        <span aria-hidden="true">↗</span> 체크리스트 공유하기
+      </button>
+
+      <dialog class="share-preview" id="share-preview" aria-labelledby="share-preview-title">
+        <div class="dialog-grabber" aria-hidden="true"></div>
+        <p class="eyebrow">공유 미리보기 · 모의 SDK</p>
+        <h2 id="share-preview-title">토스 앱 공유 호출을 흉내 내고 있어요</h2>
+        <pre id="share-preview-message"></pre>
+        <button class="dialog-close" id="close-share-preview" type="button">확인</button>
+      </dialog>
+
+      <section class="list-section" aria-labelledby="list-title">
+        <div class="section-heading">
+          <h2 id="list-title">할 일</h2>
+          <div class="list-actions">
+            <button class="text-button" id="clear-done" type="button">완료 항목 지우기</button>
+          </div>
+        </div>
+        <div class="filter-tabs" role="group" aria-label="할 일 필터">
+          <button class="filter-tab is-active" type="button" data-filter="all" aria-pressed="true">전체 <span id="all-count">0</span></button>
+          <button class="filter-tab" type="button" data-filter="active" aria-pressed="false">남은 일 <span id="active-count">0</span></button>
+          <button class="filter-tab" type="button" data-filter="done" aria-pressed="false">완료 <span id="done-count">0</span></button>
+        </div>
+        <ul class="task-list" id="task-list" aria-live="polite"></ul>
+        <p class="empty-state" id="empty-state">아직 항목이 없어요.<br />오늘 할 일을 하나 추가해볼까요?</p>
+      </section>
+
+      <footer class="app-footer">
+        <span class="status-dot" id="status-dot" aria-hidden="true"></span>
+        <span id="status-message">브라우저 미리보기 · 공유 기능은 브라우저 공유로 동작해요.</span>
+      </footer>
+    </main>
+  </body>
+</html>
